@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caballeros Premium</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,700;1,300;1,400&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-brand" id="nav-brand">
+    <img src="images/logo.png" alt="Caballeros Premium">
+    <span class="nav-brand-name">Caballeros</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="catalogo.html">Catálogo</a></li>
+    <li><a href="sobre.html">Sobre</a></li>
+    <li><a href="contato.html">Contato</a></li>
+  </ul>
+  <div class="nav-right">
+    <button type="button" id="theme-toggle" class="theme-btn" aria-label="Alternar tema claro/escuro">
+      <svg class="ico-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="ico-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <button type="button" id="nav-hamburger" class="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true">
+  <span class="mobile-menu-eyebrow">Caballeros Premium</span>
+  <a href="index.html">Home</a>
+  <a href="catalogo.html">Catálogo</a>
+  <a href="sobre.html">Sobre</a>
+  <a href="contato.html">Contato</a>
+  <div class="mobile-menu-rule"></div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-glow"></div>
+
+  <div id="h-ey">
+    <span class="el"></span>
+    Pimentas Raras · Premium Gourmet
+    <span class="el"></span>
+  </div>
+  <h1 id="h-brand">CABALLEROS</h1>
+
+  <div class="hero-cols">
+    <div class="hero-left">
+      <div id="h-rule"></div>
+      <p id="h-tagline">Molhos artesanais para paladares extraordinários. A intensidade que você procurava.</p>
+      <div id="h-actions">
+        <a href="#produtos" class="btn-primary">Explorar Catálogo</a>
+        <a href="#sobre" class="btn-ghost">Nossa História</a>
+      </div>
+      <div id="h-stats">
+        <div><div class="stat-v">2.2M</div><div class="stat-l">SHU</div></div>
+        <div class="stat-div"></div>
+        <div><div class="stat-v">150ml</div><div class="stat-l">Volume</div></div>
+        <div class="stat-div"></div>
+        <div><div class="stat-v">100%</div><div class="stat-l">Artesanal</div></div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div id="h-badge">
+        <img src="images/logo.png" alt="Caballeros Premium">
+      </div>
+      <div id="h-bottle">
+        <div class="hero-pts">
+          <div class="p p1"></div><div class="p p2"></div><div class="p p3"></div>
+          <div class="p p4"></div><div class="p p5"></div><div class="p p6"></div>
+        </div>
+        <img src="images/pimentacarolina.png" alt="Caballeros — Carolina Reaper Premium 150ml">
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint" id="shint">
+    <span class="scroll-hint-txt">Scroll</span>
+    <div class="scroll-hint-line"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span class="mi">Artesanal <span>·</span></span>
+    <span class="mi">Carolina Reaper <span>·</span></span>
+    <span class="mi">2.200.000 SHU <span>·</span></span>
+    <span class="mi">Premium Gourmet <span>·</span></span>
+    <span class="mi">Handcrafted <span>·</span></span>
+    <span class="mi">Ghost Pepper <span>·</span></span>
+    <span class="mi">Habanero Gold <span>·</span></span>
+    <span class="mi">Extrema Ardência <span>·</span></span>
+    <span class="mi">Artesanal <span>·</span></span>
+    <span class="mi">Carolina Reaper <span>·</span></span>
+    <span class="mi">2.200.000 SHU <span>·</span></span>
+    <span class="mi">Premium Gourmet <span>·</span></span>
+    <span class="mi">Handcrafted <span>·</span></span>
+    <span class="mi">Ghost Pepper <span>·</span></span>
+    <span class="mi">Habanero Gold <span>·</span></span>
+    <span class="mi">Extrema Ardência <span>·</span></span>
+  </div>
+</div>
+
+<!-- STORY -->
+<section class="story-section" id="story">
+  <div class="story-sticky" id="story-sticky">
+    <div class="story-left">
+      <div class="chapter" id="ch1">
+        <span class="c-kicker">Carolina Reaper · Premium</span>
+        <h2 class="c-hl">Extrema.</h2>
+        <p class="c-body">A pimenta mais ardida já documentada. Uma experiência reservada para poucos.</p>
+      </div>
+      <div class="chapter" id="ch2">
+        <span class="c-kicker">Produção Artesanal</span>
+        <h2 class="c-hl">Selvagem.</h2>
+        <p class="c-body">Colhida no auge da maturação. Processada em pequenos lotes com precisão artesanal.</p>
+      </div>
+      <div class="chapter" id="ch3">
+        <span class="c-kicker">Escala Scoville</span>
+        <h2 class="c-hl c-hl-num">2.200.000</h2>
+        <p class="c-sub">SHU · Unidades de Calor Scoville</p>
+        <div class="story-heat-track">
+          <div class="story-heat-fill" id="shf"></div>
+          <div class="story-heat-dot"></div>
+        </div>
+      </div>
+      <div class="chapter" id="ch4">
+        <span class="c-kicker">150ml · Artesanal · Limitado</span>
+        <h2 class="c-hl">Para os<br>corajosos.</h2>
+        <p class="c-body">Não é um produto para todos. É para quem busca o limite da experiência.</p>
+      </div>
+      <div class="chapter" id="ch5">
+        <span class="c-kicker">Caballeros Premium</span>
+        <h2 class="c-hl">Pronto para<br>o desafio?</h2>
+        <div class="c-actions">
+          <a href="#produtos" class="btn-primary">Ver Catálogo</a>
+        </div>
+      </div>
+    </div>
+    <div class="story-right">
+      <div class="story-carousel" id="sc">
+        <div class="bottle-glow-orb" id="sc-glow"></div>
+
+        <div class="sc-slide active">
+          <img src="images/pimentacarolina.png" class="story-bottle" alt="Carolina Reapers">
+          <div class="sc-info">
+            <span class="sc-tag te">Extrema Ardência</span>
+            <div class="sc-name">Carolina Reapers</div>
+            <div class="sc-shu">2.200.000 SHU</div>
+          </div>
+        </div>
+        <div class="sc-slide">
+          <img src="images/malaguetinha.png" class="story-bottle" alt="Malaguetinha">
+          <div class="sc-info">
+            <span class="sc-tag tl">Ardência Leve</span>
+            <div class="sc-name">Malaguetinha</div>
+            <div class="sc-shu">80.000 SHU</div>
+          </div>
+        </div>
+        <div class="sc-slide">
+          <img src="images/cremedepequisempimenta.png" class="story-bottle" alt="Creme de Pequi">
+          <div class="sc-info">
+            <span class="sc-tag tp">Sem Pimenta</span>
+            <div class="sc-name">Creme de Pequi</div>
+            <div class="sc-shu">Sabor do Cerrado</div>
+          </div>
+        </div>
+
+        <div class="sc-dots">
+          <button type="button" class="sc-dot active" data-idx="0" aria-label="Carolina Reapers"></button>
+          <button type="button" class="sc-dot" data-idx="1" aria-label="Malaguetinha"></button>
+          <button type="button" class="sc-dot" data-idx="2" aria-label="Creme de Pequi"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="produtos" id="produtos">
+  <div class="sec-header">
+    <span class="sec-kicker">Catálogo Premium</span>
+    <h2 class="sec-title">Nossos Molhos</h2>
+  </div>
+  <div class="pgrid">
+    <div class="pcard g-hidden">
+      <span class="ctag te">Extrema Ardência</span>
+      <div class="cstage"><div class="camb"></div><img src="images/pimentacarolina.png" alt="Carolina Reapers" class="cimg"></div>
+      <div class="cbody">
+        <div class="ccat">Carolina Reaper</div>
+        <h3 class="cname">Carolina Reapers</h3>
+        <p class="cdesc">A pimenta mais ardida. Para os que buscam o limite absoluto da intensidade.</p>
+        <div class="heat-row">
+          <div class="heat-top"><span class="heat-lbl">Ardência</span><span class="heat-shu">2.200.000 SHU</span></div>
+          <div class="heat-track"><div class="heat-fill hf-100"></div></div>
+        </div>
+        <div class="cpills"><span class="pill">150ml</span><span class="pill">Artesanal</span><span class="pill">Limitado</span></div>
+        <a href="catalogo.html" class="cbtn">Ver no Catálogo</a>
+      </div>
+    </div>
+    <div class="pcard g-hidden">
+      <span class="ctag tl">Ardência Leve</span>
+      <div class="cstage"><div class="camb camb-leve"></div><img src="images/malaguetinha.png" alt="Malaguetinha" class="cimg"></div>
+      <div class="cbody">
+        <div class="ccat">Malagueta</div>
+        <h3 class="cname">Malaguetinha</h3>
+        <p class="cdesc">Clássica e versátil. Ardência suave com o sabor autêntico da pimenta brasileira.</p>
+        <div class="heat-row">
+          <div class="heat-top"><span class="heat-lbl">Ardência</span><span class="heat-shu">80.000 SHU</span></div>
+          <div class="heat-track"><div class="heat-fill hf-12"></div></div>
+        </div>
+        <div class="cpills"><span class="pill">150ml</span><span class="pill">Artesanal</span><span class="pill">Tradicional</span></div>
+        <a href="catalogo.html" class="cbtn">Ver no Catálogo</a>
+      </div>
+    </div>
+    <div class="pcard g-hidden">
+      <span class="ctag tp">Sem Pimenta</span>
+      <div class="cstage"><div class="camb camb-pequi"></div><img src="images/cremedepequisempimenta.png" alt="Creme de Pequi" class="cimg"></div>
+      <div class="cbody">
+        <div class="ccat">Pequi</div>
+        <h3 class="cname">Creme de Pequi</h3>
+        <p class="cdesc">Cremoso e aromático. O sabor inconfundível do cerrado em cada colherada.</p>
+        <div class="heat-row">
+          <div class="heat-top"><span class="heat-lbl">Ardência</span><span class="heat-shu">Sem Pimenta</span></div>
+          <div class="heat-track"><div class="heat-fill hf-0"></div></div>
+        </div>
+        <div class="cpills"><span class="pill">Gourmet</span><span class="pill">Artesanal</span><span class="pill">Cerrado</span></div>
+        <a href="catalogo.html" class="cbtn">Ver no Catálogo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sobre" id="sobre">
+  <div class="sobre-deco">FOGO</div>
+  <div class="sobre-inner">
+    <div>
+      <p class="sobre-ey">Nossa História</p>
+      <h2 class="sobre-h">Arte &<br><em>Ardência.</em></h2>
+      <div class="sobre-rule"></div>
+      <p class="sobre-p">A Caballeros Premium nasceu da obsessão por transformar a pimenta em arte. Cada frasco é o resultado de um processo artesanal rigoroso, com pimentas selecionadas e combinações únicas.</p>
+      <p class="sobre-p">Não fazemos molho industrial. Fazemos experiências.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar g-hidden">
+        <div class="pn">01</div>
+        <div><h4 class="ph">Ardência Certificada</h4><p class="pp">Cada lote testado na escala Scoville. A experiência prometida garantida em cada frasco.</p></div>
+      </div>
+      <div class="pillar g-hidden">
+        <div class="pn">02</div>
+        <div><h4 class="ph">Produção Artesanal</h4><p class="pp">Pequenos lotes, máxima atenção. Sem conservantes. Sem compromisso com a qualidade.</p></div>
+      </div>
+      <div class="pillar g-hidden">
+        <div class="pn">03</div>
+        <div><h4 class="ph">Ingredientes Selecionados</h4><p class="pp">Pimentas de origem controlada, colhidas no auge da maturação para máxima intensidade.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contato">
+  <div class="fi">
+    <div class="fb">
+      <img src="images/logo.png" alt="Caballeros Premium">
+      <div><div class="fbn">Caballeros Premium</div><div class="fbs">Qualidade em cada gota.</div></div>
+    </div>
+    <p class="fc">&copy; 2026 Caballeros Premium</p>
+    <div class="fs">
+      <a href="#" class="sb" title="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a data-wa="Olá! Gostaria de entrar em contato com a Caballeros Premium." class="sb" title="WhatsApp" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/nav.js"></script>
+</body>
+</html>

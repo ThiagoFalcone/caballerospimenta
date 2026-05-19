@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sobre — Caballeros Premium</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,700;1,300;1,400;1,700&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+
+/* ── CINEMATIC OPENER ── */
+.opener{
+  height:100vh;min-height:600px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;background:#000;overflow:hidden;
+}
+.opener-word{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(5rem,14vw,13rem);font-weight:700;
+  color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.12);
+  letter-spacing:.06em;line-height:1;text-align:center;
+  position:absolute;z-index:0;user-select:none;pointer-events:none;
+}
+.opener-glow{
+  position:absolute;width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(196,30,58,.08) 0%,transparent 65%);
+  filter:blur(80px);pointer-events:none;
+  animation:glow-pulse 4s ease-in-out infinite;
+}
+@keyframes glow-pulse{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.15);opacity:1}}
+.opener-content{
+  position:relative;z-index:2;text-align:center;
+  opacity:0;animation:opener-in 1.2s .3s ease forwards;
+}
+.opener-eyebrow{
+  font-size:.62rem;font-weight:700;letter-spacing:.42em;text-transform:uppercase;
+  color:var(--red);margin-bottom:1.5rem;display:flex;align-items:center;justify-content:center;gap:1rem;
+}
+.opener-eyebrow span{height:1px;width:32px;background:var(--red);opacity:.5;display:block}
+.opener-main-txt{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(2.2rem,5vw,4rem);font-weight:300;
+  color:var(--txt);line-height:1.35;letter-spacing:.02em;
+}
+.opener-main-txt strong{font-weight:700;color:var(--red);font-style:normal}
+.opener-arrow{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;z-index:2;
+  animation:opener-in 1s 1.2s ease forwards;opacity:0;
+}
+.opener-arrow-line{width:1px;height:50px;background:linear-gradient(to bottom,var(--red),transparent);animation:drop 2s ease-in-out infinite}
+@keyframes drop{0%,100%{opacity:.3;transform:scaleY(.6);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
+@keyframes opener-in{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── SECTION SHARED ── */
+.sb-section{padding:8rem 0;position:relative}
+.sb-section:nth-child(even){background:var(--surface)}
+.sb-inner{max-width:1200px;margin:0 auto;padding:0 4rem}
+.sb-kicker{font-size:.63rem;font-weight:700;letter-spacing:.38em;text-transform:uppercase;color:var(--red);margin-bottom:1.2rem;display:block}
+.sb-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4.2rem);font-weight:700;line-height:1.05;color:var(--txt);margin-bottom:1.5rem}
+.sb-title em{font-style:italic;color:var(--red)}
+.sb-rule{width:48px;height:1px;background:linear-gradient(to right,var(--red),var(--fire));margin-bottom:2rem}
+.sb-body{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:1.05rem;line-height:1.9;color:var(--txt2);max-width:600px}
+.sb-body + .sb-body{margin-top:1rem}
+
+/* ── ORIGIN: split ── */
+.origin-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.origin-deco{
+  position:relative;display:flex;align-items:center;justify-content:center;
+}
+.origin-big-num{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(8rem,18vw,16rem);font-weight:700;
+  color:transparent;-webkit-text-stroke:1px rgba(196,30,58,.12);
+  line-height:1;user-select:none;
+}
+.origin-badge{
+  position:absolute;
+  width:clamp(120px,16vw,160px);height:clamp(120px,16vw,160px);border-radius:50%;
+  border:1px solid rgba(196,30,58,.25);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;gap:.3rem;
+  background:rgba(196,30,58,.04);
+}
+.origin-badge-v{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:700;color:var(--red);line-height:1}
+.origin-badge-l{font-size:.52rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--txt3)}
+
+/* ── NUMBERS CALLOUT ── */
+.numbers-section{
+  background:#000;padding:7rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden;
+}
+.numbers-section::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 100% at 50% 50%,rgba(196,30,58,.04) 0%,transparent 70%);
+  pointer-events:none;
+}
+.numbers-grid{max-width:1200px;margin:0 auto;padding:0 4rem;display:grid;grid-template-columns:repeat(3,1fr);gap:4rem;text-align:center}
+.num-block{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.num-block.in{opacity:1;transform:translateY(0)}
+.num-block:nth-child(2){transition-delay:.15s}
+.num-block:nth-child(3){transition-delay:.3s}
+.num-val{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,7vw,6rem);font-weight:700;
+  color:var(--txt);line-height:1;letter-spacing:.03em;margin-bottom:.5rem;
+}
+.num-val .num-red{color:var(--red)}
+.num-label{font-size:.6rem;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--txt3)}
+.num-desc{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.9rem;color:var(--txt2);margin-top:.4rem}
+.num-div{width:1px;background:var(--border);margin:0 auto}
+
+/* ── PROCESS: 3 steps ── */
+.process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-left:1px solid var(--border);border-top:1px solid var(--border)}
+.process-step{border-right:1px solid var(--border);border-bottom:1px solid var(--border);padding:2.5rem 2rem;position:relative;overflow:hidden;transition:background .3s}
+.process-step:hover{background:rgba(255,255,255,.014)}
+.process-step::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(to right,var(--red),var(--fire));
+  transform:scaleX(0);transform-origin:left;transition:transform .4s ease;
+}
+.process-step:hover::before{transform:scaleX(1)}
+.ps-num{
+  font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:700;
+  color:transparent;-webkit-text-stroke:1px rgba(196,30,58,.18);
+  line-height:1;margin-bottom:1.2rem;
+}
+.ps-title{font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--txt);margin-bottom:.8rem}
+.ps-body{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:.93rem;color:var(--txt2);line-height:1.75}
+
+/* ── VALUES GRID ── */
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;margin-top:4rem}
+.value-card{
+  padding:2rem 1.8rem;border:1px solid var(--border);position:relative;
+  opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s,border-color .3s;
+}
+.value-card.in{opacity:1;transform:translateY(0)}
+.value-card:nth-child(2){transition-delay:.1s}
+.value-card:nth-child(3){transition-delay:.2s}
+.value-card:hover{border-color:rgba(196,30,58,.3)}
+.value-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(to right,var(--red),var(--fire));
+  transform:scaleX(0);transform-origin:left;transition:transform .4s;
+}
+.value-card:hover::after{transform:scaleX(1)}
+.vc-icon{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:700;color:var(--red);line-height:1;margin-bottom:1.2rem;opacity:.6}
+.vc-title{font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--txt);margin-bottom:.6rem}
+.vc-body{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:.92rem;color:var(--txt2);line-height:1.7}
+
+/* ── MANIFESTO ── */
+.manifesto{
+  padding:10rem 4rem;background:#000;text-align:center;
+  position:relative;overflow:hidden;
+  border-top:1px solid var(--border);
+}
+.manifesto::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(196,30,58,.05) 0%,transparent 65%);
+  pointer-events:none;
+}
+.manifesto-kicker{font-size:.62rem;font-weight:700;letter-spacing:.4em;text-transform:uppercase;color:var(--red);margin-bottom:3rem;display:block}
+.manifesto-poem{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
+  font-size:clamp(1.6rem,3.5vw,2.8rem);line-height:1.65;
+  color:var(--txt);max-width:760px;margin:0 auto;
+  position:relative;z-index:1;
+}
+.manifesto-poem .mline{
+  display:block;opacity:0;transform:translateY(20px);
+  transition:opacity .8s,transform .8s;
+}
+.manifesto-poem .mline.in{opacity:1;transform:translateY(0)}
+.manifesto-poem .mline:nth-child(2){transition-delay:.12s}
+.manifesto-poem .mline:nth-child(3){transition-delay:.24s}
+.manifesto-poem .mline:nth-child(4){transition-delay:.36s}
+.manifesto-poem .mline:nth-child(5){transition-delay:.48s}
+.manifesto-poem .mline:nth-child(6){transition-delay:.6s}
+.manifesto-poem .accent{color:var(--red);font-style:normal;font-weight:700}
+.manifesto-rule{width:60px;height:1px;background:linear-gradient(to right,transparent,var(--red),transparent);margin:3rem auto 0}
+.manifesto-brand{
+  font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;
+  letter-spacing:.35em;text-transform:uppercase;color:var(--txt3);
+  margin-top:2rem;display:block;
+}
+body.light .manifesto{background:var(--bg)}
+
+/* ── CTA FINAL ── */
+.final-cta{
+  padding:6rem 4rem;background:var(--surface);border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;gap:2rem;
+}
+.final-cta-txt h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:700;color:var(--txt)}
+.final-cta-txt p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.95rem;color:var(--txt2);margin-top:.4rem}
+.final-cta-btns{display:flex;gap:.8rem;flex-wrap:wrap}
+
+/* ── SCROLL REVEALS ── */
+.sr{opacity:0;transform:translateY(32px);transition:opacity .8s,transform .8s}
+.sr.in{opacity:1;transform:translateY(0)}
+.sr-delay-1{transition-delay:.1s}
+.sr-delay-2{transition-delay:.2s}
+
+/* ── LIGHT MODE ── */
+body.light .opener{background:var(--bg)}
+body.light .numbers-section{background:var(--bg)}
+body.light .final-cta{background:var(--surface)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .sb-section{padding:5rem 0}
+  .sb-inner{padding:0 1.2rem}
+  .origin-grid{grid-template-columns:1fr;gap:2.5rem}
+  .origin-deco{display:none}
+  .numbers-grid{grid-template-columns:1fr;padding:0 1.2rem;gap:2.5rem}
+  .num-div{display:none}
+  .process-grid{grid-template-columns:1fr}
+  .values-grid{grid-template-columns:1fr;gap:1.2rem}
+  .manifesto{padding:6rem 1.2rem}
+  .final-cta{flex-direction:column;text-align:center;padding:3.5rem 1.2rem}
+  .final-cta-btns{justify-content:center}
+  .opener-word{font-size:clamp(4rem,22vw,8rem)}
+  .opener-main-txt{font-size:clamp(1.4rem,5vw,2.2rem)}
+}
+/* ── UTILITY CLASSES ── */
+.num-unit{font-size:.5em;color:var(--txt3)}
+.mline-muted{color:var(--txt2)}
+.mline-muted-mt{color:var(--txt2);display:block;margin-top:1.5rem}
+.sb-body-gap{margin-top:1rem}
+.sb-section-pb0{padding-bottom:0}
+.sb-inner-pb0{padding-bottom:0}
+.sb-title-mb{margin-bottom:3rem}
+.sb-section-surface{background:var(--surface)}
+</style>
+</head>
+<body>
+
+<nav id="nav" class="scrolled">
+  <a href="index.html" class="nav-brand nav-brand-visible" id="nav-brand">
+    <img src="images/logo.png" alt="Caballeros Premium">
+    <span class="nav-brand-name">Caballeros</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="catalogo.html">Catálogo</a></li>
+    <li><a href="sobre.html" class="nav-link-active">Sobre</a></li>
+    <li><a href="contato.html">Contato</a></li>
+  </ul>
+  <div class="nav-right">
+    <button type="button" id="theme-toggle" class="theme-btn" aria-label="Alternar tema">
+      <svg class="ico-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="ico-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <button type="button" id="nav-hamburger" class="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true">
+  <span class="mobile-menu-eyebrow">Caballeros Premium</span>
+  <a href="index.html">Home</a>
+  <a href="catalogo.html">Catálogo</a>
+  <a href="sobre.html">Sobre</a>
+  <a href="contato.html">Contato</a>
+  <div class="mobile-menu-rule"></div>
+</div>
+
+<!-- CINEMATIC OPENER -->
+<section class="opener">
+  <div class="opener-word">FOGO</div>
+  <div class="opener-glow"></div>
+  <div class="opener-content">
+    <div class="opener-eyebrow">
+      <span></span>Nossa História<span></span>
+    </div>
+    <p class="opener-main-txt">
+      A arte de transformar<br>
+      uma simples pimenta<br>
+      em uma <strong>obra-prima.</strong>
+    </p>
+  </div>
+  <div class="opener-arrow">
+    <div class="opener-arrow-line"></div>
+  </div>
+</section>
+
+<!-- ORIGIN -->
+<section class="sb-section">
+  <div class="sb-inner">
+    <div class="origin-grid">
+      <div>
+        <span class="sb-kicker sr">01 · Origem</span>
+        <h2 class="sb-title sr sr-delay-1">A obsessão<br>que virou <em>arte.</em></h2>
+        <div class="sb-rule sr sr-delay-1"></div>
+        <p class="sb-body sr sr-delay-2">A Caballeros Premium nasceu de uma obsessão simples: transformar a pimenta em arte. Não como ingrediente, mas como experiência. Como declaração de personalidade.</p>
+        <p class="sb-body sr sr-delay-2 sb-body-gap">Cada frasco é o resultado de um processo artesanal rigoroso. Pimentas selecionadas, colhidas no auge da maturação, processadas em pequenos lotes com precisão e cuidado.</p>
+      </div>
+      <div class="origin-deco sr">
+        <div class="origin-big-num">01</div>
+        <div class="origin-badge">
+          <span class="origin-badge-v">100%</span>
+          <span class="origin-badge-l">Artesanal</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS CALLOUT -->
+<div class="numbers-section">
+  <div class="numbers-grid">
+    <div class="num-block">
+      <div class="num-val"><span class="num-red">2.2M</span></div>
+      <div class="num-label">SHU Máximo</div>
+      <div class="num-desc">Carolina Reaper, a mais ardida do mundo</div>
+    </div>
+    <div class="num-block">
+      <div class="num-val">150<span class="num-unit">ml</span></div>
+      <div class="num-label">Volume Premium</div>
+      <div class="num-desc">Cada frasco, uma experiência completa</div>
+    </div>
+    <div class="num-block">
+      <div class="num-val"><span class="num-red">100</span><span class="num-unit">%</span></div>
+      <div class="num-label">Artesanal</div>
+      <div class="num-desc">Sem conservantes. Sem compromissos.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<section class="sb-section sb-section-pb0">
+  <div class="sb-inner sb-inner-pb0">
+    <span class="sb-kicker sr">02 · Processo</span>
+    <h2 class="sb-title sr sr-delay-1 sb-title-mb">Do campo<br>ao <em>frasco.</em></h2>
+    <div class="process-grid">
+      <div class="process-step sr">
+        <div class="ps-num">01</div>
+        <h3 class="ps-title">Seleção das Pimentas</h3>
+        <p class="ps-body">Pimentas de origem controlada, colhidas manualmente no auge da maturação. Apenas as mais intensas e aromáticas são escolhidas para cada lote.</p>
+      </div>
+      <div class="process-step sr sr-delay-1">
+        <div class="ps-num">02</div>
+        <h3 class="ps-title">Processamento Artesanal</h3>
+        <p class="ps-body">Pequenos lotes com máxima atenção. Cada etapa executada à mão, preservando os óleos essenciais e a intensidade original da pimenta.</p>
+      </div>
+      <div class="process-step sr sr-delay-2">
+        <div class="ps-num">03</div>
+        <h3 class="ps-title">Controle de Qualidade</h3>
+        <p class="ps-body">Cada lote testado na escala Scoville antes de ir ao frasco. A ardência prometida, garantida. Zero conservantes. Zero compromissos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="sb-section sb-section-surface">
+  <div class="sb-inner">
+    <span class="sb-kicker sr">03 · Valores</span>
+    <h2 class="sb-title sr sr-delay-1">O que nos<br><em>define.</em></h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="vc-icon">I.</div>
+        <h3 class="vc-title">Intensidade</h3>
+        <p class="vc-body">Não fazemos meio-termo. Cada produto é criado para entregar a experiência mais intensa possível — seja na ardência ou no sabor.</p>
+      </div>
+      <div class="value-card">
+        <div class="vc-icon">A.</div>
+        <h3 class="vc-title">Artesanato</h3>
+        <p class="vc-body">Produção em pequenos lotes, feita à mão, sem automação industrial. A imperfeição do artesanal é precisamente o que nos torna únicos.</p>
+      </div>
+      <div class="value-card">
+        <div class="vc-icon">H.</div>
+        <h3 class="vc-title">Honestidade</h3>
+        <p class="vc-body">Ingredientes reais. Rótulo transparente. Sem conservantes, sem agentes artificiais. O que está na embalagem é exatamente o que você consome.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto">
+  <span class="manifesto-kicker">Manifesto</span>
+  <div class="manifesto-poem" id="manifesto-poem">
+    <span class="mline">A pimenta não é um ingrediente.</span>
+    <span class="mline">É uma <span class="accent">declaração.</span></span>
+    <span class="mline mline-muted-mt">Para os que recusam o ordinário.</span>
+    <span class="mline mline-muted">Para os que buscam o limite.</span>
+    <span class="mline mline-muted">Para os que sabem que sabor</span>
+    <span class="mline mline-muted">é também uma questão de <span class="accent">caráter.</span></span>
+  </div>
+  <div class="manifesto-rule"></div>
+  <span class="manifesto-brand">Caballeros Premium</span>
+</section>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <div class="final-cta-txt">
+    <h2>Experimente você mesmo.</h2>
+    <p>O catálogo completo disponível para pedido via WhatsApp.</p>
+  </div>
+  <div class="final-cta-btns">
+    <a href="catalogo.html" class="btn-primary">Ver Catálogo</a>
+    <a href="contato.html" class="btn-ghost">Falar Conosco</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fi">
+    <div class="fb">
+      <img src="images/logo.png" alt="Caballeros Premium">
+      <div><div class="fbn">Caballeros Premium</div><div class="fbs">Qualidade em cada gota.</div></div>
+    </div>
+    <p class="fc">&copy; 2026 Caballeros Premium</p>
+    <div class="fs">
+      <a href="#" class="sb" title="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+      <a data-wa="Olá! Gostaria de entrar em contato com a Caballeros Premium." class="sb" title="WhatsApp" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const WA='5511999999999';
+document.querySelectorAll('[data-wa]').forEach(el=>{
+  const m=el.getAttribute('data-wa')||'';
+  el.href='https://wa.me/'+WA+(m?'?text='+encodeURIComponent(m):'');
+});
+
+// Theme
+const btn=document.getElementById('theme-toggle');
+if(localStorage.getItem('caballeros-theme')==='light') document.body.classList.add('light');
+btn.addEventListener('click',()=>{
+  document.body.classList.toggle('light');
+  localStorage.setItem('caballeros-theme',document.body.classList.contains('light')?'light':'dark');
+});
+
+// Nav
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>10),{passive:true});
+
+// Scroll reveals (shared .sr + value-card + num-block + manifesto lines)
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0.15});
+document.querySelectorAll('.sr,.value-card,.num-block').forEach(el=>io.observe(el));
+
+// Manifesto: trigger lines when section enters view
+const manifestoIO=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      document.querySelectorAll('.mline').forEach(l=>l.classList.add('in'));
+      manifestoIO.unobserve(e.target);
+    }
+  });
+},{threshold:0.2});
+const mp=document.getElementById('manifesto-poem');
+if(mp) manifestoIO.observe(mp);
+</script>
+<script src="js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contato — Caballeros Premium</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,700;1,300;1,400&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+
+/* ── PAGE BACKGROUND GRID ── */
+body::before{
+  content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(196,30,58,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(196,30,58,.025) 1px,transparent 1px);
+  background-size:80px 80px;
+  animation:grid-drift 40s linear infinite;
+}
+@keyframes grid-drift{from{background-position:0 0}to{background-position:80px 80px}}
+body.light::before{
+  background-image:
+    linear-gradient(rgba(196,30,58,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(196,30,58,.05) 1px,transparent 1px);
+}
+
+/* ── HEADER ── */
+.ct-header{
+  padding:8rem 4rem 5rem;text-align:center;
+  position:relative;overflow:hidden;
+}
+.ct-header::after{
+  content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:1px;height:50px;background:linear-gradient(to bottom,var(--red),transparent);
+}
+.ct-pre{font-size:.62rem;font-weight:700;letter-spacing:.42em;text-transform:uppercase;color:var(--red);margin-bottom:1.2rem;display:block;opacity:0;animation:ct-up .6s .1s ease forwards}
+.ct-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(4rem,10vw,9rem);font-weight:700;letter-spacing:.06em;
+  color:var(--txt);line-height:.9;
+  opacity:0;animation:ct-up .9s .25s ease forwards;
+}
+.ct-title em{font-style:italic;color:var(--red)}
+.ct-sub{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;
+  font-size:clamp(1rem,1.8vw,1.25rem);color:var(--txt2);
+  margin-top:1.5rem;max-width:500px;margin-left:auto;margin-right:auto;
+  opacity:0;animation:ct-up .7s .4s ease forwards;
+}
+@keyframes ct-up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── WA CARDS ── */
+.wa-section{padding:2rem 0 6rem}
+.wa-grid{display:grid;grid-template-columns:repeat(3,1fr);max-width:1200px;margin:0 auto;padding:0 4rem;gap:1.5rem}
+.wa-card{
+  border:1px solid var(--border);padding:3rem 2.5rem;
+  position:relative;overflow:hidden;cursor:pointer;
+  transition:border-color .35s,background .35s,transform .35s;
+  text-decoration:none;display:block;
+}
+.wa-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(196,30,58,.0) 0%,rgba(196,30,58,.06) 100%);
+  opacity:0;transition:opacity .4s;
+}
+.wa-card:hover::before{opacity:1}
+.wa-card:hover{border-color:rgba(196,30,58,.5);transform:translateY(-6px)}
+.wa-card:hover .wc-icon-wrap{border-color:var(--red);background:rgba(196,30,58,.08)}
+.wa-card:hover .wc-arrow{opacity:1;transform:translate(0,0)}
+
+/* Variant: revenda (gold accent) */
+.wa-card.gold:hover{border-color:rgba(212,165,116,.6)}
+.wa-card.gold::before{background:linear-gradient(135deg,rgba(212,165,116,.0) 0%,rgba(212,165,116,.06) 100%)}
+.wa-card.gold:hover .wc-icon-wrap{border-color:var(--gold);background:rgba(212,165,116,.08)}
+
+.wc-icon-wrap{
+  width:52px;height:52px;border-radius:50%;
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1.8rem;transition:border-color .35s,background .35s;
+}
+.wc-icon-wrap svg{width:22px;height:22px;fill:currentColor}
+.wc-tag{font-size:.56rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--red);margin-bottom:.7rem;display:block}
+.wc-tag.gold-tag{color:var(--gold)}
+.wc-title{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:700;color:var(--txt);line-height:1.1;margin-bottom:.8rem}
+.wc-desc{font-family:'Cormorant Garamond',serif;font-weight:300;font-style:italic;font-size:.92rem;color:var(--txt2);line-height:1.7;margin-bottom:2rem}
+.wc-action{
+  display:flex;align-items:center;gap:.6rem;
+  font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--txt3);transition:color .3s;
+}
+.wa-card:hover .wc-action{color:var(--red)}
+.wa-card.gold:hover .wc-action{color:var(--gold)}
+.wc-action-line{height:1px;width:24px;background:currentColor;flex-shrink:0;transition:width .3s}
+.wa-card:hover .wc-action-line{width:36px}
+.wc-arrow{
+  position:absolute;top:2rem;right:2rem;
+  opacity:0;transform:translate(-6px,6px);
+  transition:opacity .3s,transform .3s;
+  color:var(--red);
+}
+.wa-card.gold .wc-arrow{color:var(--gold)}
+
+/* ── DIVIDER ── */
+.section-div{
+  max-width:1200px;margin:0 auto 0;padding:0 4rem;
+  display:flex;align-items:center;gap:1.5rem;
+}
+.sd-line{flex:1;height:1px;background:var(--border)}
+.sd-label{font-size:.58rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--txt3);white-space:nowrap}
+
+/* ── MESSAGE FORM ── */
+.order-section{padding:5rem 0 7rem}
+.order-inner{max-width:600px;margin:0 auto;padding:0 4rem}
+.order-inner h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;color:var(--txt);margin-bottom:.5rem}
+.order-inner p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.95rem;color:var(--txt2);margin-bottom:2.5rem}
+
+/* Floating label inputs */
+.form-group{position:relative;margin-bottom:1.2rem}
+.form-group textarea~label,
+.form-group input~label{
+  position:absolute;left:1rem;top:50%;transform:translateY(-50%);
+  font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--txt3);pointer-events:none;
+  transition:top .22s,font-size .22s,color .22s,transform .22s;
+}
+.form-group textarea~label{top:1.2rem;transform:none}
+.form-group input:focus~label,
+.form-group input:not(:placeholder-shown)~label,
+.form-group textarea:focus~label,
+.form-group textarea:not(:placeholder-shown)~label{
+  top:-.55rem;transform:none;font-size:.52rem;
+  color:var(--red);background:var(--bg);padding:0 .3rem;left:.7rem;
+}
+body.light .form-group input:focus~label,
+body.light .form-group input:not(:placeholder-shown)~label,
+body.light .form-group textarea:focus~label,
+body.light .form-group textarea:not(:placeholder-shown)~label{
+  background:var(--bg);
+}
+.form-input,.form-textarea{
+  width:100%;padding:.85rem 1rem;
+  background:transparent;border:1px solid var(--border);
+  color:var(--txt);font-family:'Barlow Condensed',sans-serif;font-size:.88rem;
+  outline:none;transition:border-color .25s,box-shadow .25s;resize:none;
+  appearance:none;
+}
+.form-input:focus,.form-textarea:focus{
+  border-color:var(--red);
+  box-shadow:0 0 0 3px rgba(196,30,58,.08);
+}
+.form-textarea{height:110px;line-height:1.5}
+.form-submit{
+  width:100%;padding:.9rem;
+  font-family:'Barlow Condensed',sans-serif;font-size:.72rem;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;
+  background:var(--red);color:#fff;border:none;cursor:pointer;
+  transition:background .28s,box-shadow .28s;position:relative;overflow:hidden;
+}
+.form-submit::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);
+  transform:translateX(-100%);transition:transform .5s;
+}
+.form-submit:hover::after{transform:translateX(100%)}
+.form-submit:hover{background:var(--fire);box-shadow:0 8px 30px rgba(255,107,53,.28)}
+
+/* ── INFO STRIP ── */
+.info-strip{
+  background:var(--surface);border-top:1px solid var(--border);
+  padding:4rem 0;
+}
+.info-grid{max-width:1200px;margin:0 auto;padding:0 4rem;display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-left:1px solid var(--border)}
+.info-col{border-right:1px solid var(--border);padding:0 2.5rem}
+.info-col:first-child{padding-left:0}
+.info-col:last-child{padding-right:0}
+.info-icon{width:36px;height:36px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem}
+.info-icon svg{width:16px;height:16px;stroke:var(--red);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.info-label{font-size:.58rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--red);margin-bottom:.5rem;display:block}
+.info-val{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;color:var(--txt);margin-bottom:.3rem}
+.info-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.88rem;color:var(--txt2)}
+
+/* ── PULSE GREEN ── */
+@keyframes pulse-g{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.4)}50%{box-shadow:0 0 0 6px rgba(34,197,94,0)}}
+.os-online{display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem}
+.os-online-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:pulse-g 2s infinite;flex-shrink:0}
+/* ── WA CARD ICON COLORS ── */
+.wc-icon-wrap.ico-red svg{color:var(--red)}
+.wc-icon-wrap.ico-neutral svg{color:var(--txt2)}
+.wc-icon-wrap.ico-gold svg{color:var(--gold)}
+/* ── WA CARD GOLD ACTION ── */
+.wc-action.wc-action-gold{color:var(--gold)}
+.wc-action.wc-action-gold .wc-action-line{background:var(--gold)}
+.wc-arrow.wc-arrow-gold{color:var(--gold)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .ct-header{padding:5rem 1.2rem 3.5rem}
+  .ct-title{font-size:clamp(3rem,12vw,5rem)}
+  .wa-grid{grid-template-columns:1fr;padding:0 1.2rem;gap:1rem}
+  .wa-card{padding:2rem 1.8rem}
+  .section-div{padding:0 1.2rem}
+  .order-section{padding:4rem 0 5rem}
+  .order-inner{padding:0 1.2rem}
+  .info-grid{grid-template-columns:1fr;border-left:none;padding:0 1.2rem;gap:2rem}
+  .info-col{border-right:none;border-bottom:1px solid var(--border);padding:0 0 2rem}
+  .info-col:last-child{border-bottom:none;padding-bottom:0}
+}
+@media(max-width:420px){
+  .ct-header{padding:4.5rem 1rem 3rem}
+  .wa-grid{padding:0 1rem}
+  .order-inner{padding:0 1rem}
+  .info-grid{padding:0 1rem}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav" class="scrolled">
+  <a href="index.html" class="nav-brand nav-brand-visible" id="nav-brand">
+    <img src="images/logo.png" alt="Caballeros Premium">
+    <span class="nav-brand-name">Caballeros</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="catalogo.html">Catálogo</a></li>
+    <li><a href="sobre.html">Sobre</a></li>
+    <li><a href="contato.html" class="nav-link-active">Contato</a></li>
+  </ul>
+  <div class="nav-right">
+    <button type="button" id="theme-toggle" class="theme-btn" aria-label="Alternar tema">
+      <svg class="ico-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="ico-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <button type="button" id="nav-hamburger" class="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true">
+  <span class="mobile-menu-eyebrow">Caballeros Premium</span>
+  <a href="index.html">Home</a>
+  <a href="catalogo.html">Catálogo</a>
+  <a href="sobre.html">Sobre</a>
+  <a href="contato.html">Contato</a>
+  <div class="mobile-menu-rule"></div>
+</div>
+
+<!-- HEADER -->
+<header class="ct-header">
+  <span class="ct-pre">Entre em contato</span>
+  <h1 class="ct-title">FALE<br><em>CONOSCO</em></h1>
+  <p class="ct-sub">Atendimento direto, sem burocracia. Escolha como prefere nos contatar.</p>
+</header>
+
+<!-- WHATSAPP CARDS -->
+<section class="wa-section">
+  <div class="wa-grid">
+
+    <!-- Pedido -->
+    <a id="wa-pedido" class="wa-card" target="_blank" rel="noopener noreferrer">
+      <div class="wc-icon-wrap ico-red">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 2v12h10V6H7zm2 2h6v2H9V8zm0 4h6v2H9v-2zm0 4h4v2H9v-2z"/></svg>
+      </div>
+      <span class="wc-tag">Mais popular</span>
+      <h2 class="wc-title">Fazer Pedido</h2>
+      <p class="wc-desc">Escolha seu molho, informe a quantidade e endereço. Confirmamos em minutos.</p>
+      <div class="wc-action">
+        <span class="wc-action-line"></span>
+        Pedir agora
+      </div>
+      <svg class="wc-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+    </a>
+
+    <!-- Dúvidas -->
+    <a id="wa-duvida" class="wa-card" target="_blank" rel="noopener noreferrer">
+      <div class="wc-icon-wrap ico-neutral">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+      <span class="wc-tag">Atendimento</span>
+      <h2 class="wc-title">Tirar Dúvidas</h2>
+      <p class="wc-desc">Perguntas sobre ingredientes, ardência, validade, modo de uso ou qualquer outro detalhe.</p>
+      <div class="wc-action">
+        <span class="wc-action-line"></span>
+        Perguntar
+      </div>
+      <svg class="wc-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+    </a>
+
+    <!-- Revenda -->
+    <a id="wa-revenda" class="wa-card gold" target="_blank" rel="noopener noreferrer">
+      <div class="wc-icon-wrap ico-gold">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      </div>
+      <span class="wc-tag gold-tag">B2B · Atacado</span>
+      <h2 class="wc-title">Revender</h2>
+      <p class="wc-desc">Quer levar a Caballeros para o seu restaurante, loja ou evento? Fale sobre condições especiais.</p>
+      <div class="wc-action wc-action-gold">
+        <span class="wc-action-line"></span>
+        Ver condições
+      </div>
+      <svg class="wc-arrow wc-arrow-gold" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+    </a>
+
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="section-div">
+  <div class="sd-line"></div>
+  <span class="sd-label">Ou nos envie uma mensagem</span>
+  <div class="sd-line"></div>
+</div>
+
+<!-- MESSAGE FORM -->
+<section class="order-section">
+  <div class="order-inner">
+    <h2>Envie uma mensagem</h2>
+    <p>Dúvidas, pedidos especiais ou só um oi — respondemos sempre.</p>
+    <div class="form-group">
+      <input type="text" class="form-input" id="f-nome" placeholder=" " autocomplete="off">
+      <label for="f-nome">Seu Nome</label>
+    </div>
+    <div class="form-group">
+      <input type="tel" class="form-input" id="f-tel" placeholder=" " autocomplete="off">
+      <label for="f-tel">WhatsApp / Telefone</label>
+    </div>
+    <div class="form-group">
+      <textarea class="form-textarea" id="f-msg" placeholder=" "></textarea>
+      <label for="f-msg">Mensagem</label>
+    </div>
+    <button type="button" class="form-submit" id="form-submit">
+      Enviar via WhatsApp
+    </button>
+  </div>
+</section>
+
+<!-- INFO STRIP -->
+<div class="info-strip">
+  <div class="info-grid">
+    <div class="info-col">
+      <div class="info-icon">
+        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <span class="info-label">Atendimento</span>
+      <div class="info-val">Seg – Dom</div>
+      <div class="info-sub">Das 8h às 22h via WhatsApp</div>
+    </div>
+    <div class="info-col">
+      <div class="info-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </div>
+      <span class="info-label">WhatsApp</span>
+      <div class="info-val">+55 (11) 99999-9999</div>
+      <div class="info-sub">Resposta garantida no dia</div>
+    </div>
+    <div class="info-col">
+      <div class="info-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <span class="info-label">Redes Sociais</span>
+      <div class="info-val">@caballerospremium</div>
+      <div class="info-sub">Instagram · Fotos & Novidades</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fi">
+    <div class="fb">
+      <img src="images/logo.png" alt="Caballeros Premium">
+      <div><div class="fbn">Caballeros Premium</div><div class="fbs">Qualidade em cada gota.</div></div>
+    </div>
+    <p class="fc">&copy; 2026 Caballeros Premium</p>
+    <div class="fs">
+      <a href="#" class="sb" title="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+      <a data-wa="Olá! Gostaria de entrar em contato com a Caballeros Premium." class="sb" title="WhatsApp" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const WA='5511999999999';
+document.querySelectorAll('[data-wa]').forEach(el=>{
+  const m=el.getAttribute('data-wa')||'';
+  el.href='https://wa.me/'+WA+(m?'?text='+encodeURIComponent(m):'');
+});
+
+// WA cards
+document.getElementById('wa-pedido').href='https://wa.me/'+WA+'?text='+encodeURIComponent('Olá! Gostaria de fazer um pedido da Caballeros Premium.');
+document.getElementById('wa-duvida').href='https://wa.me/'+WA+'?text='+encodeURIComponent('Olá! Tenho uma dúvida sobre os produtos da Caballeros Premium.');
+document.getElementById('wa-revenda').href='https://wa.me/'+WA+'?text='+encodeURIComponent('Olá! Tenho interesse em revender os produtos da Caballeros Premium. Poderia me passar as condições?');
+
+// Theme
+const btn=document.getElementById('theme-toggle');
+if(localStorage.getItem('caballeros-theme')==='light') document.body.classList.add('light');
+btn.addEventListener('click',()=>{
+  document.body.classList.toggle('light');
+  localStorage.setItem('caballeros-theme',document.body.classList.contains('light')?'light':'dark');
+});
+
+// Nav
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>10),{passive:true});
+
+// Form submit → WhatsApp
+document.getElementById('form-submit').addEventListener('click',()=>{
+  const nome=document.getElementById('f-nome').value.trim();
+  const tel=document.getElementById('f-tel').value.trim();
+  const msg=document.getElementById('f-msg').value.trim();
+  let text='Olá! Entrei em contato pelo site da Caballeros Premium.';
+  if(nome) text+='\n\nNome: '+nome;
+  if(tel) text+='\nContato: '+tel;
+  if(msg) text+='\n\nMensagem: '+msg;
+  window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(text),'_blank');
+});
+</script>
+<script src="js/nav.js"></script>
+</body>
+</html>
