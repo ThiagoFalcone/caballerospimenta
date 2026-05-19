@@ -6,7 +6,8 @@
   --txt:#F5F5F5;--txt2:#6e6e6e;--txt3:#333;
 }
 html{scroll-behavior:auto;overflow-x:clip;scroll-padding-top:68px}
-body{font-family:'Barlow Condensed',sans-serif;background:var(--bg);color:var(--txt);overflow-x:clip}
+body{font-family:'Barlow Condensed',sans-serif;background:var(--bg);color:var(--txt);overflow-x:clip;opacity:1;transition:opacity .35s ease}
+body.page-leaving{opacity:0}
 #produtos,#sobre,#contato{scroll-margin-top:68px}
 
 /* ── LIGHT MODE ── */
