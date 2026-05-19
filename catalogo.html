@@ -1,257 +1,13 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catálogo — Caballeros Premium</title>
+<title>CatÃ¡logo â€” Caballeros Premium</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,700;1,300;1,400&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
-<style>
-/* ── CAT HERO ── */
-.cat-hero{
-  min-height:58vh;display:flex;flex-direction:column;justify-content:flex-end;
-  padding:68px 4rem 4.5rem;position:relative;overflow:hidden;background:#000;
-}
-.cat-hero::before{
-  content:'';position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse 55% 70% at 75% 50%, rgba(196,30,58,.06) 0%, transparent 65%),
-    repeating-linear-gradient(0deg,transparent,transparent 80px,rgba(255,255,255,.012) 80px,rgba(255,255,255,.012) 81px),
-    repeating-linear-gradient(90deg,transparent,transparent 80px,rgba(255,255,255,.012) 80px,rgba(255,255,255,.012) 81px);
-  pointer-events:none;
-}
-.cat-eyebrow{
-  font-size:.63rem;font-weight:700;letter-spacing:.42em;text-transform:uppercase;
-  color:var(--red);margin-bottom:1.2rem;display:flex;align-items:center;gap:1rem;
-  opacity:0;animation:cat-up .6s .1s ease forwards;
-}
-.cat-eyebrow-line{height:1px;width:36px;background:var(--red);opacity:.6;display:block}
-.cat-hero-h{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(4.5rem,11vw,10rem);font-weight:700;
-  letter-spacing:.06em;line-height:.9;color:var(--txt);
-  opacity:0;animation:cat-up .9s .25s ease forwards;
-}
-.cat-hero-h em{font-style:italic;color:var(--red)}
-.cat-hero-meta{
-  display:flex;align-items:center;gap:2.5rem;margin-top:2rem;
-  opacity:0;animation:cat-up .7s .45s ease forwards;
-}
-.cat-meta-item{font-size:.6rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--txt3)}
-.cat-meta-item span{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:700;color:var(--gold);display:block;margin-bottom:.2rem;letter-spacing:.04em}
-.cat-meta-div{width:1px;height:30px;background:var(--border)}
-
-/* ── FILTER BAR ── */
-.filter-bar{
-  position:sticky;top:68px;z-index:100;
-  background:rgba(0,0,0,.94);backdrop-filter:blur(24px);
-  border-bottom:1px solid var(--border);
-  padding:.75rem 4rem;display:flex;align-items:center;gap:2rem;
-  overflow-x:auto;scrollbar-width:none;
-}
-.filter-bar::-webkit-scrollbar{display:none}
-.filter-lbl{font-size:.56rem;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--txt3);white-space:nowrap;flex-shrink:0}
-.filter-pills{display:flex;gap:.45rem}
-.fpill{
-  font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-  padding:.38rem 1.1rem;border:1px solid var(--border);
-  background:transparent;color:var(--txt3);cursor:pointer;transition:all .22s;white-space:nowrap;
-}
-.fpill:hover{border-color:rgba(196,30,58,.45);color:var(--txt)}
-.fpill.active{border-color:var(--red);color:var(--red);background:rgba(196,30,58,.06)}
-.filter-count{margin-left:auto;font-size:.56rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--txt3);white-space:nowrap;flex-shrink:0}
-
-/* ── MAIN LAYOUT ── */
-.cat-layout{display:grid;grid-template-columns:1fr 72px}
-
-/* ── PRODUCT BLOCKS ── */
-.prod-block{
-  border-bottom:1px solid var(--border);
-  display:grid;grid-template-columns:1fr 1fr;
-  min-height:500px;position:relative;overflow:hidden;
-  transition:background .4s;
-}
-.prod-block:nth-child(even){direction:rtl}
-.prod-block:nth-child(even)>*{direction:ltr}
-.prod-block:hover{background:rgba(255,255,255,.014)}
-
-/* Visual half */
-.prod-visual{
-  position:relative;overflow:hidden;background:#000;
-  display:flex;align-items:center;justify-content:center;
-}
-.prod-visual-amb{
-  position:absolute;inset:0;opacity:1;transition:opacity .6s;
-  pointer-events:none;
-}
-.prod-block:hover .prod-visual-amb{opacity:1.6}
-.prod-tag{
-  position:absolute;top:1.4rem;left:1.4rem;z-index:3;
-  font-size:.54rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
-  padding:.32rem .85rem;border:1px solid currentColor;
-}
-.prod-img-wrap{
-  position:relative;z-index:2;padding:2.5rem 2rem;
-  display:flex;align-items:center;justify-content:center;
-}
-.prod-img-wrap img{
-  height:clamp(220px,32vh,370px);width:auto;object-fit:contain;
-  transition:transform .7s ease;
-  filter:drop-shadow(0 24px 60px rgba(0,0,0,.55));
-}
-.prod-block:hover .prod-img-wrap img{transform:translateY(-14px) scale(1.04)}
-body.light .prod-visual{background:var(--surface)}
-body.light .prod-img-wrap img{mix-blend-mode:multiply}
-
-/* Details half */
-.prod-details{
-  display:flex;flex-direction:column;justify-content:center;
-  padding:3rem 3.5rem;
-  opacity:0;transform:translateY(28px);
-  transition:opacity .7s ease, transform .7s ease;
-}
-.prod-details.in{opacity:1;transform:translateY(0)}
-
-.prod-num{
-  font-family:'Cormorant Garamond',serif;font-size:4.5rem;font-weight:700;
-  color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.06);
-  line-height:1;margin-bottom:-.3rem;user-select:none;
-}
-.prod-cat{font-size:.6rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--red);margin-bottom:.55rem}
-.prod-name{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(2.2rem,3.8vw,3.5rem);font-weight:700;
-  line-height:1.05;color:var(--txt);margin-bottom:1rem;
-}
-.prod-heat-row{margin-bottom:2.2rem}
-.prod-heat-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.55rem}
-.prod-heat-lbl{font-size:.57rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--txt3)}
-.prod-heat-shu{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:700;color:var(--gold)}
-.prod-heat-track{height:2px;background:rgba(255,255,255,.06);position:relative}
-.prod-heat-fill{
-  height:100%;background:linear-gradient(to right,var(--amber),var(--fire),var(--red));
-  width:0;transition:width 1.3s cubic-bezier(.16,1,.3,1);
-  position:relative;
-}
-.prod-heat-fill::after{
-  content:'';position:absolute;right:-3px;top:50%;transform:translateY(-50%);
-  width:8px;height:8px;border-radius:50%;background:var(--red);
-  box-shadow:0 0 10px var(--red),0 0 22px rgba(196,30,58,.4);
-}
-.prod-heat-fill.zero::after{display:none}
-.prod-actions{display:flex}
-.prod-cta{
-  flex:1;padding:.8rem 1.4rem;text-align:center;text-decoration:none;
-  font-family:'Barlow Condensed',sans-serif;font-size:.68rem;font-weight:700;
-  letter-spacing:.2em;text-transform:uppercase;
-  background:var(--red);color:#fff;border:none;cursor:pointer;
-  transition:background .28s,box-shadow .28s;
-}
-.prod-cta:hover{background:var(--fire);box-shadow:0 8px 28px rgba(255,107,53,.28)}
-
-/* ── SCOVILLE SIDEBAR ── */
-.scoville-bar{
-  position:sticky;top:calc(68px + 43px);
-  height:calc(100vh - 68px - 43px);
-  border-left:1px solid var(--border);
-  display:flex;flex-direction:column;align-items:center;
-  padding:1.5rem 0;overflow:hidden;
-}
-.sv-lbl-top{font-size:.5rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red);writing-mode:vertical-rl;margin-bottom:1rem;white-space:nowrap}
-.sv-track{flex:1;width:2px;background:rgba(255,255,255,.06);position:relative;margin:0 auto;min-height:80px}
-.sv-fill{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,var(--amber),var(--fire),var(--red));height:0;transition:height 1.2s ease}
-.sv-dot{
-  position:absolute;left:50%;transform:translateX(-50%);
-  width:5px;height:5px;border-radius:50%;background:var(--red);
-}
-.sv-dot-label{
-  position:absolute;left:14px;
-  font-size:.46rem;font-weight:700;letter-spacing:.05em;color:var(--txt3);
-  white-space:nowrap;line-height:1;
-}
-.sv-lbl-bot{font-size:.5rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--txt3);writing-mode:vertical-rl;margin-top:1rem;white-space:nowrap}
-
-
-/* ── CTA STRIP ── */
-.cta-strip{
-  padding:4.5rem 4rem;background:#000;border-top:1px solid var(--border);
-  display:flex;align-items:center;justify-content:space-between;gap:2rem;
-}
-.cta-strip-txt h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.2vw,2.8rem);font-weight:700;color:var(--txt)}
-.cta-strip-txt p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.95rem;color:var(--txt2);margin-top:.35rem}
-.cta-pulse{position:relative;display:inline-flex;align-items:center;gap:.5rem}
-.cta-pulse::before{content:'';width:7px;height:7px;border-radius:50%;background:#22c55e;animation:pulse-green 2s infinite}
-.cta-pulse-txt{font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--txt3)}
-body.light .cta-strip{background:var(--bg)}
-
-@keyframes pulse-green{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(34,197,94,.4)}50%{box-shadow:0 0 0 6px rgba(34,197,94,0)}}
-@keyframes cat-up{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
-
-/* ── AMBIENT GLOWS (per product) ── */
-.amb-red{background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(196,30,58,.1) 0%,transparent 70%);filter:blur(50px)}
-.amb-green{background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(168,196,144,.08) 0%,transparent 70%);filter:blur(50px)}
-.amb-gold{background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(200,168,75,.08) 0%,transparent 70%);filter:blur(50px)}
-.amb-fire{background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(255,107,53,.08) 0%,transparent 70%);filter:blur(50px)}
-
-/* ── HEAT SHU MUTED ── */
-.shu-muted{color:var(--txt2)}
-
-/* ── SCOVILLE SIDEBAR INNER ── */
-.sv-inner{flex:1;width:100%;display:flex;justify-content:center;position:relative}
-.sv-dot-max{top:0%}
-.sv-dot-80k{top:96.4%;background:#a8c490}
-.sv-dot-60k{top:97.3%;background:var(--fire)}
-
-/* ── MINIMAL COMPARE ── */
-.mcomp{padding:4rem 4rem 0;border-top:1px solid var(--border)}
-.mcomp-kicker{font-size:.56rem;font-weight:700;letter-spacing:.38em;text-transform:uppercase;color:var(--txt3);margin-bottom:2.5rem;display:block}
-.mcomp-row{
-  display:grid;grid-template-columns:1fr 80px 130px 90px;
-  align-items:center;padding:1.1rem 0;
-  border-bottom:1px solid var(--border);
-  transition:background .2s;
-}
-.mcomp-row:first-of-type{border-top:1px solid var(--border)}
-.mcomp-row:hover{background:rgba(255,255,255,.012)}
-.mcomp-name{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:var(--txt)}
-.mcomp-dots{display:flex;gap:4px;align-items:center}
-.mcomp-dot{width:7px;height:7px;border-radius:50%}
-.mcomp-dot-on{background:var(--red)}
-.mcomp-dot-off{background:rgba(255,255,255,.1)}
-.mcomp-shu{font-family:'Cormorant Garamond',serif;font-size:.88rem;font-weight:700;color:var(--gold);text-align:right}
-.mcomp-shu-dim{color:var(--txt3)}
-.mcomp-link{
-  text-align:right;font-size:.55rem;font-weight:700;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--txt3);text-decoration:none;
-  transition:color .2s;
-}
-.mcomp-link:hover{color:var(--red)}
-
-/* ── CTA STRIP SIDE ── */
-.cta-side{display:flex;flex-direction:column;align-items:flex-end;gap:.8rem}
-.pulse-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;animation:pulse-green 2s infinite;flex-shrink:0}
-
-/* ── RESPONSIVE ── */
-@media(max-width:900px){
-  .cat-hero{padding:68px 1.2rem 3rem}
-  .filter-bar{padding:.65rem 1.2rem}
-  .cat-layout{grid-template-columns:1fr}
-  .scoville-bar{display:none}
-  .prod-block{grid-template-columns:1fr;min-height:0}
-  .prod-block:nth-child(even){direction:ltr}
-  .prod-visual{min-height:260px}
-  .prod-details{padding:1.6rem 1.2rem;opacity:1;transform:none}
-  .prod-name{font-size:2rem}
-  .prod-num{font-size:3rem}
-  .prod-actions{flex-direction:column}
-  .mcomp{padding:3rem 1.2rem 0}
-  .mcomp-row{grid-template-columns:1fr 70px 80px;gap:.4rem}
-  .mcomp-dots{display:none}
-  .cta-strip{flex-direction:column;text-align:center;padding:3rem 1.2rem}
-}
-</style>
 </head>
 <body>
 
@@ -262,7 +18,7 @@ body.light .cta-strip{background:var(--bg)}
   </a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="catalogo.html" class="nav-link-active">Catálogo</a></li>
+    <li><a href="catalogo.html" class="nav-link-active">CatÃ¡logo</a></li>
     <li><a href="sobre.html">Sobre</a></li>
     <li><a href="contato.html">Contato</a></li>
   </ul>
@@ -279,7 +35,7 @@ body.light .cta-strip{background:var(--bg)}
 <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true">
   <span class="mobile-menu-eyebrow">Caballeros Premium</span>
   <a href="index.html">Home</a>
-  <a href="catalogo.html">Catálogo</a>
+  <a href="catalogo.html">CatÃ¡logo</a>
   <a href="sobre.html">Sobre</a>
   <a href="contato.html">Contato</a>
   <div class="mobile-menu-rule"></div>
@@ -287,8 +43,8 @@ body.light .cta-strip{background:var(--bg)}
 
 <!-- HERO -->
 <section class="cat-hero">
-  <div class="cat-eyebrow"><span class="cat-eyebrow-line"></span>Arsenal Completo · 2026</div>
-  <h1 class="cat-hero-h">CATÁ<em>LOGO</em></h1>
+  <div class="cat-eyebrow"><span class="cat-eyebrow-line"></span>Arsenal Completo Â· 2026</div>
+  <h1 class="cat-hero-h">CATÃ<em>LOGO</em></h1>
   <div class="cat-hero-meta">
     <div class="cat-meta-item"><span>04</span>Produtos</div>
     <div class="cat-meta-div"></div>
@@ -304,8 +60,8 @@ body.light .cta-strip{background:var(--bg)}
   <div class="filter-pills">
     <button type="button" class="fpill active" data-filter="all">Todos</button>
     <button type="button" class="fpill" data-filter="extremo">Extremo</button>
-    <button type="button" class="fpill" data-filter="leve">Ardência Leve</button>
-    <button type="button" class="fpill" data-filter="medio">Ardência Média</button>
+    <button type="button" class="fpill" data-filter="leve">ArdÃªncia Leve</button>
+    <button type="button" class="fpill" data-filter="medio">ArdÃªncia MÃ©dia</button>
     <button type="button" class="fpill" data-filter="sem">Sem Pimenta</button>
   </div>
   <span class="filter-count" id="filter-count">3 de 3</span>
@@ -315,11 +71,11 @@ body.light .cta-strip{background:var(--bg)}
 <div class="cat-layout">
   <div id="prod-list">
 
-    <!-- 01 · Carolina Reapers -->
+    <!-- 01 Â· Carolina Reapers -->
     <article class="prod-block" data-intensity="extremo">
       <div class="prod-visual">
         <div class="prod-visual-amb amb-red"></div>
-        <span class="prod-tag te">Extrema Ardência</span>
+        <span class="prod-tag te">Extrema ArdÃªncia</span>
         <div class="prod-img-wrap">
           <img src="images/pimentacarolina.png" alt="Carolina Reapers 150ml">
         </div>
@@ -330,7 +86,7 @@ body.light .cta-strip{background:var(--bg)}
         <h2 class="prod-name">Carolina<br>Reapers</h2>
         <div class="prod-heat-row">
           <div class="prod-heat-head">
-            <span class="prod-heat-lbl">Ardência · Scoville</span>
+            <span class="prod-heat-lbl">ArdÃªncia Â· Scoville</span>
             <span class="prod-heat-shu">2.200.000 SHU</span>
           </div>
           <div class="prod-heat-track">
@@ -338,16 +94,16 @@ body.light .cta-strip{background:var(--bg)}
           </div>
         </div>
         <div class="prod-actions">
-          <a data-wa="Olá! Gostaria de comprar o molho Carolina Reapers 150ml da Caballeros Premium." class="prod-cta" target="_blank" rel="noopener noreferrer">Comprar via WhatsApp</a>
+          <a data-wa="OlÃ¡! Gostaria de comprar o molho Carolina Reapers 150ml da Caballeros Premium." class="prod-cta" target="_blank" rel="noopener noreferrer">Comprar via WhatsApp</a>
         </div>
       </div>
     </article>
 
-    <!-- 02 · Malaguetinha -->
+    <!-- 02 Â· Malaguetinha -->
     <article class="prod-block" data-intensity="leve">
       <div class="prod-visual">
         <div class="prod-visual-amb amb-green"></div>
-        <span class="prod-tag tl">Ardência Leve</span>
+        <span class="prod-tag tl">ArdÃªncia Leve</span>
         <div class="prod-img-wrap">
           <img src="images/malaguetinha.png" alt="Malaguetinha 150ml">
         </div>
@@ -358,7 +114,7 @@ body.light .cta-strip{background:var(--bg)}
         <h2 class="prod-name">Malaguetinha</h2>
         <div class="prod-heat-row">
           <div class="prod-heat-head">
-            <span class="prod-heat-lbl">Ardência · Scoville</span>
+            <span class="prod-heat-lbl">ArdÃªncia Â· Scoville</span>
             <span class="prod-heat-shu">80.000 SHU</span>
           </div>
           <div class="prod-heat-track">
@@ -366,12 +122,12 @@ body.light .cta-strip{background:var(--bg)}
           </div>
         </div>
         <div class="prod-actions">
-          <a data-wa="Olá! Gostaria de comprar a Malaguetinha 150ml da Caballeros Premium." class="prod-cta" target="_blank" rel="noopener noreferrer">Comprar via WhatsApp</a>
+          <a data-wa="OlÃ¡! Gostaria de comprar a Malaguetinha 150ml da Caballeros Premium." class="prod-cta" target="_blank" rel="noopener noreferrer">Comprar via WhatsApp</a>
         </div>
       </div>
     </article>
 
-    <!-- 03 · Creme de Pequi -->
+    <!-- 03 Â· Creme de Pequi -->
     <article class="prod-block" data-intensity="sem">
       <div class="prod-visual">
         <div class="prod-visual-amb amb-gold"></div>
@@ -382,11 +138,11 @@ body.light .cta-strip{background:var(--bg)}
       </div>
       <div class="prod-details">
         <div class="prod-num">03</div>
-        <div class="prod-cat">Pequi · Cerrado</div>
+        <div class="prod-cat">Pequi Â· Cerrado</div>
         <h2 class="prod-name">Creme de<br>Pequi</h2>
         <div class="prod-heat-row">
           <div class="prod-heat-head">
-            <span class="prod-heat-lbl">Ardência</span>
+            <span class="prod-heat-lbl">ArdÃªncia</span>
             <span class="prod-heat-shu shu-muted">Sem Pimenta</span>
           </div>
           <div class="prod-heat-track">
@@ -394,27 +150,27 @@ body.light .cta-strip{background:var(--bg)}
           </div>
         </div>
         <div class="prod-actions">
-          <a data-wa="Olá! Gostaria de comprar o Creme de Pequi sem Pimenta da Caballeros Premium." class="prod-cta" target="_blank" rel="noopener noreferrer">Comprar via WhatsApp</a>
+          <a data-wa="OlÃ¡! Gostaria de comprar o Creme de Pequi sem Pimenta da Caballeros Premium." class="prod-cta" target="_blank" rel="noopener noreferrer">Comprar via WhatsApp</a>
         </div>
       </div>
     </article>
 
-    <!-- 04 · Creme de Pequi com Pimenta -->
+    <!-- 04 Â· Creme de Pequi com Pimenta -->
     <article class="prod-block" data-intensity="medio">
       <div class="prod-visual">
         <div class="prod-visual-amb amb-fire"></div>
-        <span class="prod-tag th">Ardência Média</span>
+        <span class="prod-tag th">ArdÃªncia MÃ©dia</span>
         <div class="prod-img-wrap">
           <img src="images/cremedepequicompimenta.png" alt="Creme de Pequi com Pimenta">
         </div>
       </div>
       <div class="prod-details">
         <div class="prod-num">04</div>
-        <div class="prod-cat">Pequi com Pimenta · Cerrado</div>
+        <div class="prod-cat">Pequi com Pimenta Â· Cerrado</div>
         <h2 class="prod-name">Creme de Pequi<br>com Pimenta</h2>
         <div class="prod-heat-row">
           <div class="prod-heat-head">
-            <span class="prod-heat-lbl">Ardência · Scoville</span>
+            <span class="prod-heat-lbl">ArdÃªncia Â· Scoville</span>
             <span class="prod-heat-shu">60.000 SHU</span>
           </div>
           <div class="prod-heat-track">
@@ -422,7 +178,7 @@ body.light .cta-strip{background:var(--bg)}
           </div>
         </div>
         <div class="prod-actions">
-          <a data-wa="Olá! Gostaria de comprar o Creme de Pequi com Pimenta da Caballeros Premium." class="prod-cta" target="_blank" rel="noopener noreferrer">Comprar via WhatsApp</a>
+          <a data-wa="OlÃ¡! Gostaria de comprar o Creme de Pequi com Pimenta da Caballeros Premium." class="prod-cta" target="_blank" rel="noopener noreferrer">Comprar via WhatsApp</a>
         </div>
       </div>
     </article>
@@ -446,7 +202,7 @@ body.light .cta-strip{background:var(--bg)}
 
 <!-- MINIMAL COMPARE -->
 <section class="mcomp">
-  <span class="mcomp-kicker">Comparativo de Ardência</span>
+  <span class="mcomp-kicker">Comparativo de ArdÃªncia</span>
 
   <div class="mcomp-row">
     <span class="mcomp-name">Carolina Reapers</span>
@@ -458,7 +214,7 @@ body.light .cta-strip{background:var(--bg)}
       <span class="mcomp-dot mcomp-dot-on"></span>
     </div>
     <span class="mcomp-shu">2.200.000 SHU</span>
-    <a data-wa="Olá! Gostaria de comprar o molho Carolina Reapers 150ml da Caballeros Premium." class="mcomp-link" target="_blank" rel="noopener noreferrer">Comprar →</a>
+    <a data-wa="OlÃ¡! Gostaria de comprar o molho Carolina Reapers 150ml da Caballeros Premium." class="mcomp-link" target="_blank" rel="noopener noreferrer">Comprar â†’</a>
   </div>
 
   <div class="mcomp-row">
@@ -471,7 +227,7 @@ body.light .cta-strip{background:var(--bg)}
       <span class="mcomp-dot mcomp-dot-off"></span>
     </div>
     <span class="mcomp-shu">80.000 SHU</span>
-    <a data-wa="Olá! Gostaria de comprar a Malaguetinha 150ml da Caballeros Premium." class="mcomp-link" target="_blank" rel="noopener noreferrer">Comprar →</a>
+    <a data-wa="OlÃ¡! Gostaria de comprar a Malaguetinha 150ml da Caballeros Premium." class="mcomp-link" target="_blank" rel="noopener noreferrer">Comprar â†’</a>
   </div>
 
   <div class="mcomp-row">
@@ -484,7 +240,7 @@ body.light .cta-strip{background:var(--bg)}
       <span class="mcomp-dot mcomp-dot-off"></span>
     </div>
     <span class="mcomp-shu">60.000 SHU</span>
-    <a data-wa="Olá! Gostaria de comprar o Creme de Pequi com Pimenta da Caballeros Premium." class="mcomp-link" target="_blank" rel="noopener noreferrer">Comprar →</a>
+    <a data-wa="OlÃ¡! Gostaria de comprar o Creme de Pequi com Pimenta da Caballeros Premium." class="mcomp-link" target="_blank" rel="noopener noreferrer">Comprar â†’</a>
   </div>
 
   <div class="mcomp-row">
@@ -497,7 +253,7 @@ body.light .cta-strip{background:var(--bg)}
       <span class="mcomp-dot mcomp-dot-off"></span>
     </div>
     <span class="mcomp-shu mcomp-shu-dim">Sem Pimenta</span>
-    <a data-wa="Olá! Gostaria de comprar o Creme de Pequi sem Pimenta da Caballeros Premium." class="mcomp-link" target="_blank" rel="noopener noreferrer">Comprar →</a>
+    <a data-wa="OlÃ¡! Gostaria de comprar o Creme de Pequi sem Pimenta da Caballeros Premium." class="mcomp-link" target="_blank" rel="noopener noreferrer">Comprar â†’</a>
   </div>
 </section>
 
@@ -505,14 +261,14 @@ body.light .cta-strip{background:var(--bg)}
 <div class="cta-strip">
   <div class="cta-strip-txt">
     <h2>Pronto para encomendar?</h2>
-    <p>Atendimento direto. Entrega rápida. Sempre artesanal.</p>
+    <p>Atendimento direto. Entrega rÃ¡pida. Sempre artesanal.</p>
   </div>
   <div class="cta-side">
     <div class="cta-pulse">
       <div class="pulse-dot"></div>
-      <span class="cta-pulse-txt">Online agora · Resposta em &lt; 2h</span>
+      <span class="cta-pulse-txt">Online agora Â· Resposta em &lt; 2h</span>
     </div>
-    <a data-wa="Olá! Quero fazer um pedido da Caballeros Premium." class="btn-primary" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+    <a data-wa="OlÃ¡! Quero fazer um pedido da Caballeros Premium." class="btn-primary" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
   </div>
 </div>
 
@@ -526,7 +282,7 @@ body.light .cta-strip{background:var(--bg)}
     <p class="fc">&copy; 2026 Caballeros Premium</p>
     <div class="fs">
       <a href="#" class="sb" title="Instagram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
-      <a data-wa="Olá! Gostaria de entrar em contato com a Caballeros Premium." class="sb" title="WhatsApp" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+      <a data-wa="OlÃ¡! Gostaria de entrar em contato com a Caballeros Premium." class="sb" title="WhatsApp" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
     </div>
   </div>
 </footer>
