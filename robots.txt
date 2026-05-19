@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://caballeros-premium.vercel.app/sitemap.xml
