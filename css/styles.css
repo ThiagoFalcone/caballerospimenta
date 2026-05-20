@@ -908,3 +908,51 @@ body.light .form-group input:focus~label,body.light .form-group input:not(:place
   footer{padding:1.5rem 1rem}
   nav{padding:0 1rem}
 }
+
+/* ═══════════════════════════════════════
+   LIGHT MODE — EXTENDED OVERRIDES
+   ═══════════════════════════════════════ */
+
+/* Catalog hero & filter */
+body.light .cat-hero{background:var(--bg)}
+body.light .cat-hero::before{
+  background:
+    radial-gradient(ellipse 55% 70% at 75% 50%,rgba(196,30,58,.04) 0%,transparent 65%),
+    repeating-linear-gradient(0deg,transparent,transparent 80px,rgba(0,0,0,.04) 80px,rgba(0,0,0,.04) 81px),
+    repeating-linear-gradient(90deg,transparent,transparent 80px,rgba(0,0,0,.04) 80px,rgba(0,0,0,.04) 81px);
+}
+body.light .filter-bar{background:rgba(250,247,242,.97);border-bottom-color:rgba(0,0,0,.1)}
+
+/* Heat tracks — white-on-white fix */
+body.light .heat-track,
+body.light .story-heat-track,
+body.light .prod-heat-track,
+body.light .sv-track{background:rgba(0,0,0,.09)}
+
+/* Ghost button — white text invisible on light bg */
+body.light .btn-ghost{color:rgba(0,0,0,.5);border-color:rgba(0,0,0,.16)}
+body.light .btn-ghost:hover{border-color:rgba(0,0,0,.32);color:var(--txt)}
+
+/* Ghost number strokes — white-on-white */
+body.light .prod-num{-webkit-text-stroke-color:rgba(0,0,0,.07)}
+body.light .opener-word{-webkit-text-stroke-color:rgba(0,0,0,.07)}
+body.light .ps-num{-webkit-text-stroke-color:rgba(196,30,58,.14)}
+
+/* Inactive heat dots in compare table */
+body.light .mcomp-dot-off{background:rgba(0,0,0,.12)}
+
+/* Hover backgrounds — inverted for light surfaces */
+body.light .pcard:hover{background:rgba(0,0,0,.025)}
+body.light .prod-block:hover{background:rgba(0,0,0,.02)}
+body.light .mcomp-row:hover{background:rgba(0,0,0,.025)}
+body.light .process-step:hover{background:rgba(0,0,0,.025)}
+body.light .wa-card:hover{background:rgba(196,30,58,.025)}
+
+/* Product visual bg in light */
+body.light .prod-visual{background:var(--surface)}
+
+/* CTA strip */
+body.light .cta-strip{background:var(--bg)}
+
+/* Mobile menu overlay in light */
+body.light .mobile-menu{background:var(--bg)}
